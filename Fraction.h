@@ -9,8 +9,12 @@
 
 #pragma once
 
+#include <istream>
+#include <ostream>
 #include <string>
 
+using std::istream;
+using std::ostream;
 using std::string;
 
 class Fraction
@@ -40,4 +44,7 @@ public:
 	Fraction operator * (const Fraction& f);
 	Fraction operator / (const Fraction& f);
 	Fraction& operator = (const Fraction& f);
+
+	friend istream& operator >> (istream& is, Fraction& f);
+	friend ostream& operator << (ostream& os, const Fraction& f);
 };
