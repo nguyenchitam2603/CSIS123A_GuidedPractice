@@ -2,7 +2,7 @@
 * Name: Chi Tam Nguyen
 * ID: 0588491
 * Date: 06/26/2021
-* Guided Practice: 4 - Friends
+* Guided Practice: 5 - Dynamic Memory
 * Description: main.cpp - Test operator overloads of the class Fraction, as well as the
 *                         stream insertion and stream extraction operators
 */
@@ -35,19 +35,4 @@ int main()
 	cout << f8;
 
 	return 0;
-}
-
-istream& operator >> (istream& is, Fraction& f)
-{
-	cout << "Enter a numerator: ";
-	is >> f.num;
-	cout << "Enter a denominator: ";
-	is >> f.den;
-	return is;
-}
-
-ostream& operator << (ostream& os, const Fraction& f)
-{
-	os << "The fraction is: " << f.num << "/" << f.den << endl;
-	return os;
 }
