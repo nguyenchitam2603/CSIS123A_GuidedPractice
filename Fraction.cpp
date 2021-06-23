@@ -2,7 +2,7 @@
 * Name: Chi Tam Nguyen
 * ID: 0588491
 * Date: 06/26/2021
-* Guided Practice: 5 - Dynamic Memory
+* Guided Practice: 6 - Static Members
 * Description: Fraction.cpp - Definition of class Fraction. It provides functions and operator overloads
 *              relating to addition, subtraction, multiplication, division, and equal.
 */
@@ -14,6 +14,8 @@
 
 using namespace std;
 
+int Fraction::count = 0;
+
 Fraction::Fraction()
 	: Fraction(1, 1)
 {
@@ -23,6 +25,7 @@ Fraction::Fraction(int num, int den)
 {
 	this->create();
 	this->setFraction(num, den);
+	Fraction::count++;
 }
 
 Fraction::Fraction(string arg)
@@ -32,18 +35,21 @@ Fraction::Fraction(string arg)
 	int den = stoi(arg.substr(spacePos + 1));
 	this->create();
 	this->setFraction(num, den);
+	Fraction::count++;
 }
 
 Fraction::Fraction(const Fraction& f)
 {
 	this->create();
 	this->setFraction(f.getNum(), f.getDen());
+	Fraction::count++;
 }
 
 Fraction::~Fraction()
 {
 	delete this->num;
 	delete this->den;
+	Fraction::count--;
 }
 
 void Fraction::create()
@@ -117,6 +123,11 @@ string Fraction::toString()
 	stringstream ss;
 	ss << *this->num << "/" << *this->den;
 	return ss.str();
+}
+
+void Fraction::printCount()
+{
+	cout << "There are " << Fraction::count << " Instances" << endl;
 }
 
 Fraction Fraction::operator + (const Fraction& f)

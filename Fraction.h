@@ -2,7 +2,7 @@
 * Name: Chi Tam Nguyen
 * ID: 0588491
 * Date: 06/26/2021
-* Guided Practice: 5 - Dynamic Memory
+* Guided Practice: 6 - Static Members
 * Description: Fraction.h - Declaration of class Fraction. It provides functions and operator overloads
 *              relating to addition, subtraction, multiplication, division, and equal.
 */
@@ -22,6 +22,7 @@ class Fraction
 private:
 	int* num;
 	int* den;
+	static int count;
 
 public:
 	// Constructors
@@ -43,6 +44,9 @@ public:
 	int getDen() const;
 	void printFraction();
 	string toString();
+
+	// Accessor for static count
+	static void printCount();
 
 	// Operators Overload
 	Fraction operator + (const Fraction& f);
