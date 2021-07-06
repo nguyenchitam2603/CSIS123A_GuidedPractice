@@ -1,8 +1,8 @@
 /*
 * Name: Chi Tam Nguyen
 * ID: 0588491
-* Date: 06/26/2021
-* Guided Practice: 6 - Static Members
+* Date: 07/10/2021
+* Guided Practice: 7 - File IO
 * Description: Fraction.cpp - Definition of class Fraction. It provides functions and operator overloads
 *              relating to addition, subtraction, multiplication, division, and equal.
 */
@@ -118,7 +118,7 @@ void Fraction::printFraction()
 	cout << *this->num << "/" << *this->den << endl;
 }
 
-string Fraction::toString()
+string Fraction::getFraction() const
 {
 	stringstream ss;
 	ss << *this->num << "/" << *this->den;
