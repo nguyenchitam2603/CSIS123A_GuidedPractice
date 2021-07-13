@@ -2,7 +2,7 @@
 * Name: Chi Tam Nguyen
 * ID: 0588491
 * Date: 07/10/2021
-* Guided Practice: 7 - File IO
+* Guided Practice: 8 - Recursion
 * Description: Fraction.cpp - Definition of class Fraction. It provides functions and operator overloads
 *              relating to addition, subtraction, multiplication, division, and equal.
 */
@@ -174,4 +174,27 @@ ostream& operator << (ostream& os, const Fraction& f)
 {
 	os << "The fraction is: " << *f.num << "/" << *f.den << endl;
 	return os;
+}
+
+int Fraction::gcd(int num, int remainder)
+{
+	if (remainder == 0)
+		return num;
+	else
+		return gcd(remainder, num % remainder);
+}
+
+void Fraction::reduce()
+{
+	int rdc = 0;
+
+	if (*this->den > *this->num)
+		rdc = this->gcd(*this->den, *this->num);
+	else if (*this->den < *this->num)
+		rdc = this->gcd(*this->num, *this->den);
+	else
+		rdc = this->gcd(*this->num, *this->den);
+
+	*this->den /= rdc;
+	*this->num /= rdc;
 }

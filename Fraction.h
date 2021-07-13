@@ -2,7 +2,7 @@
 * Name: Chi Tam Nguyen
 * ID: 0588491
 * Date: 07/10/2021
-* Guided Practice: 7 - File IO
+* Guided Practice: 8 - Recursion
 * Description: Fraction.h - Declaration of class Fraction. It provides functions and operator overloads
 *              relating to addition, subtraction, multiplication, division, and equal.
 */
@@ -47,6 +47,9 @@ public:
 
 	// Accessor for static count
 	static void printCount();
+
+	int gcd(int num1, int remainder);
+	void reduce();
 
 	// Operators Overload
 	Fraction operator + (const Fraction& f);
