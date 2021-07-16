@@ -1,86 +1,99 @@
 /*
 * Name: Chi Tam Nguyen
 * ID: 0588491
-* Date: 07/10/2021
-* Guided Practice: 8 - Recursion
-* Description: main.cpp - Test recursion
+* Date: 07/17/2021
+* Guided Practice: 9 - Polymorphism
+* Description: main.cpp - Test inheritance and polymorphism
 */
 
-#include <fstream>
 #include <iostream>
-#include <string>
-
-#include "Fraction.h"
 
 using namespace std;
 
-void writeFractions(int amount);
-void readFractions();
-int sumASCII(string arg);
+// Animal
+class Animal
+{
+private:
+	int legs;
+
+public:
+	Animal();
+	void setLegs(int legs);
+	int getLegs();
+	void talk();
+	virtual void speak() = 0;
+};
+
+Animal::Animal()
+	: legs(4)
+{
+}
+
+void Animal::setLegs(int legs)
+{
+	this->legs = legs;
+}
+
+int Animal::getLegs()
+{
+	return this->legs;
+}
+
+void Animal::talk()
+{
+	this->speak();
+}
+
+// Cat
+class Cat : public Animal
+{
+public:
+	void speak();
+};
+
+void Cat::speak()
+{
+	cout << "meow" << endl;
+}
+
+// Cow
+class Cow : public Animal
+{
+public:
+	void speak();
+};
+
+void Cow::speak()
+{
+	cout << "moo" << endl;
+}
+
+// Dog
+class Dog : public Animal
+{
+public:
+	void speak();
+};
+
+void Dog::speak()
+{
+	cout << "woof" << endl;
+}
 
 int main()
 {
-	string input;
-	cout << "Enter a string: ";
-	getline(cin, input);
-	int sum = sumASCII(input);
-	cout << "The sum of the ASCII characters in the input string is " << sum << " " << endl;
+	Cat cat;
+	Dog dog;
+	Cow cow;
+	Animal* animal[3];
+	animal[0] = &cat;
+	animal[1] = &dog;
+	animal[2] = &cow;
+
+	for (int index = 0; index < 3; ++index)
+	{
+		animal[index]->talk();
+	}
 
 	return 0;
-}
-
-int sumASCII(const string arg)
-{
-	int sum;
-
-	if (arg.empty())
-	{
-		sum = 0;
-	}
-	else
-	{
-		sum = arg[0] + sumASCII(arg.substr(1));
-	}
-
-	return sum;
-}
-
-void writeFractions(int amount)
-{
-	ofstream outFile("Fractions.txt");
-	if (!outFile)
-	{
-		cout << "Unable to open the file for writing" << endl;
-		exit(1);
-	}
-	else
-	{
-		for (int index = 0; index < amount; ++index)
-		{
-			int numerator = rand();
-			int denominator = rand();
-			Fraction f(numerator, denominator);
-			outFile << f.getFraction() << endl;
-		}
-		outFile.close();
-	}
-}
-
-void readFractions()
-{
-	ifstream inFile("Fractions.txt");
-	if (!inFile)
-	{
-		cout << "Unable to open the file for reading" << endl;
-		exit(1);
-	}
-	else
-	{
-		string input;
-		while (inFile >> input)
-		{
-			cout << input << endl;
-		}
-		inFile.close();
-	}
 }

@@ -1,8 +1,8 @@
 /*
 * Name: Chi Tam Nguyen
 * ID: 0588491
-* Date: 07/10/2021
-* Guided Practice: 8 - Recursion
+* Date: 07/17/2021
+* Guided Practice: 9 - Polymorphism
 * Description: Fraction.cpp - Definition of class Fraction. It provides functions and operator overloads
 *              relating to addition, subtraction, multiplication, division, and equal.
 */
